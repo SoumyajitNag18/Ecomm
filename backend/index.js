@@ -24,11 +24,16 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Express App is running successfully')
 })
 
-app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`)
+app.listen(PORT, (error) => {
+    if(!error){
+        console.log('Server running on Port '+ PORT)
+    }
+    else{
+        console.log('Error '+ error)
+    }
 })
 
 //Image Storage Engine
@@ -86,3 +91,21 @@ const Product= mongoose.model("Product", {
         default: true,
     },
 });
+
+app.post('/addproduct', async(req, res)=>{
+    const product = new Product({
+        id: req.body.id,
+        name: req.body.name,
+        image: req.body.image,
+        category: req.body.category,
+        new_price: req.body.new_price,
+        old_price: req.body.old_price,
+    });
+    console.log(product);
+    await product.save();
+    console.log("Saved!");
+    res.json({
+        success: true,
+        name: req.body.name,
+    });
+})
