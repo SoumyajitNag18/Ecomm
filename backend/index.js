@@ -1,6 +1,6 @@
 const PORT = 4000;
 
-// this is the express setup
+// Express Setup done
 const express = require("express");
 const app = express();
 
@@ -8,17 +8,17 @@ const app = express();
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
-// file upload functionality setup
+// File upload functionality setup
 const multer = require("multer");
 
-// database setup
+// MongoDB Setup
 const mongoose = require("mongoose");
 
 const path = require ("path");
 
 const dbConnect = mongoose.connect('mongodb+srv://admin:admin@cluster0.jsucpf7.mongodb.net/');
 
-// make application to serve backend setup
+// Make application to serve backend setup
 app.use(express.json());
 app.use(cors());
 
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     res.send('Express App is running successfully')
 })
 
-//Image Storage Engine
+// Image Storage Engine with Multer
 
 const storage= multer.diskStorage({
     destination:"./upload/images",
@@ -83,6 +83,7 @@ const Product= mongoose.model("Product", {
     },
 });
 
+//Creating API for adding Products
 app.post('/addproduct', async(req, res)=>{
     let products=await Product.find({});
     let id;
@@ -104,7 +105,7 @@ app.post('/addproduct', async(req, res)=>{
     });
     console.log(product);
     await product.save();
-    console.log("Saved!");
+    console.log("Product was added and saved successfully!");
     res.json({
         success: true,
         name: req.body.name,
@@ -114,11 +115,11 @@ app.post('/addproduct', async(req, res)=>{
 //Creating API for deleting Products
 app.post('/removeproduct', async(req, res)=>{
     await Product.findOneAndDelete({id: req.body.id});
-    console.log('Removed successfully!');
+    console.log('Product was removed successfully!');
     res.json({
         success: true,
         name: req.body.name,
-    });
+    })
 })
 
 //Creating API for getting all product
