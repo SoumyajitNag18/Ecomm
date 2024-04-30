@@ -27,15 +27,6 @@ app.get('/', (req, res) => {
     res.send('Express App is running successfully')
 })
 
-app.listen(PORT, (error) => {
-    if(!error){
-        console.log('Server running on Port '+ PORT)
-    }
-    else{
-        console.log('Error '+ error)
-    }
-})
-
 //Image Storage Engine
 
 const storage= multer.diskStorage({
@@ -118,4 +109,30 @@ app.post('/addproduct', async(req, res)=>{
         success: true,
         name: req.body.name,
     });
+})
+
+//Creating API for deleting Products
+app.post('/removeproduct', async(req, res)=>{
+    await Product.findOneAndDelete({id: req.body.id});
+    console.log('Removed successfully!');
+    res.json({
+        success: true,
+        name: req.body.name,
+    });
+})
+
+//Creating API for getting all product
+app.get('/allproducts', async(req, res)=>{
+    let products=await Product.find({});
+    console.log("All Products were fetched.");
+    res.send(products);
+})
+
+app.listen(PORT, (error) => {
+    if(!error){
+        console.log('Server running on Port '+ PORT)
+    }
+    else{
+        console.log('Error '+ error)
+    }
 })
