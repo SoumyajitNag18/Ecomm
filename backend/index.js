@@ -13,6 +13,7 @@ const multer = require("multer");
 
 // MongoDB Setup
 const mongoose = require("mongoose");
+app.use(express.urlencoded({ extended: true }));
 
 const path = require ("path");
 
@@ -20,6 +21,7 @@ const dbConnect = mongoose.connect('mongodb+srv://admin:admin@cluster0.jsucpf7.m
 
 // Make application to serve backend setup
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 
@@ -85,7 +87,7 @@ const Product= mongoose.model("Product", {
 
 //Creating API for adding Products
 app.post('/addproduct', async(req, res)=>{
-    let products=await Product.find({});
+    let products=await Product.find();
     let id;
     if (products.length > 0){
         let last_product_array = products.slice(-1);
@@ -95,16 +97,17 @@ app.post('/addproduct', async(req, res)=>{
     else{
         id=1;
     }
-    const product = new Product({
-        id: id,
-        name: req.body.name,
-        image: req.body.image,
-        category: req.body.category,
-        new_price: req.body.new_price,
-        old_price: req.body.old_price,
-    });
-    console.log(product);
-    await product.save();
+    try{
+        const product = new Product({
+            id: id,
+            name: req.body.name,
+            image: req.body.image,
+            category: req.body.category,
+            new_price: req.body.new_price,
+            old_price: req.body.old_price,
+        });
+        await product.save();
+    }catch(error){}
     console.log("Product was added and saved successfully!");
     res.json({
         success: true,
