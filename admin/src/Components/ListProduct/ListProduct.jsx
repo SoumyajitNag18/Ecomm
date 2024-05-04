@@ -8,12 +8,27 @@ const ListProduct = () => {
 
     //Request for getting the product list from the DB with a request
     const fetchInfo = async() => {
-        await fetch('http;//localhost:4000/allproducts').then((res)=>res.json()).then((data)=>{setAllProducts(data)});
+        await fetch('http://localhost:4000/allproducts').then((res)=>res.json()).then((data)=>{setAllProducts(data)});
     }
 
     useEffect(()=>{
         fetchInfo();
     },[])
+
+    //For removing the product
+    const remove_product = async() =>{
+        await fetch('http://localhost:4000/removeproduct',{
+            method: 'post',
+            headers: {
+                Accept: 'application/json',
+                'content-Type': 'application/json',
+            },
+            body:JSON.stringify({id:id})
+
+        })
+        await fetchInfo();
+
+    }
 
 	return( 
         <div className="list-product">
@@ -36,7 +51,7 @@ const ListProduct = () => {
                         <p>&#x20B9;{product.old_price}</p>
                         <p>&#x20B9;{product.new_price}</p>
                         <p>{product.category}</p>
-                        <img src={cross_icon} alt="" className="listproduct-remove-icon" />
+                        <img src={cross_icon} alt="" onClick={()=>{remove_product(product.id)}} className="listproduct-remove-icon" />
                     </div>
                     <hr />
                     </>
