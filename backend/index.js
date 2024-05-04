@@ -201,7 +201,7 @@ app.post('/login' ,async (req,res)=>{
             res.json({success:true,token});
         }
         else{
-            res.json({success:false,errors:"Wrong Password"});
+            res.json({success:false,errors:"Wrong Password! Try again please!"});
         }
     }
 })

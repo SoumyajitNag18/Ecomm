@@ -4,14 +4,71 @@ import './CSS/LoginSignup.css'
 const LoginSingUp = () => {
 
   const [state, setState] = useState('Login');
+  const [formData, setFormData] = useState({
+    username:"",
+    password:"",
+    email:"",
+  });
+
+  //For updating the details provided by the user
+  const changeHandler = (e) =>{
+    setFormData({...formData,[e.target.name]:e.target.value})
+  };
+
+  //For Login page
+  const login = async() =>{
+    console.log("Login function got executed.", formData);
+    let responseData;
+    await fetch("http://localhost:4000/login",{
+      method:"POST",
+      headers:{
+        Accept: 'application/form-data',
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify(formData),
+    }).then((response)=>response.json()).then((data)=>{responseData=data});
+
+    //If response is successful, authorisation token is generated here
+    if(responseData.success){
+      localStorage.setItem('auth-token',responseData.token);
+      window.location.replace('/');
+    }
+    else{
+      alert(responseData.errors);
+    }
+  }
+
+    //For SignUp page
+    const signup = async() =>{
+    console.log("Signup function got executed.", formData);
+    let responseData;
+    await fetch("http://localhost:4000/signup",{
+      method:"POST",
+      headers:{
+        Accept: 'application/form-data',
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify(formData),
+    }).then((response)=>response.json()).then((data)=>{responseData=data});
+
+    //If response is successful, authorisation token is generated here
+    if(responseData.success){
+      localStorage.setItem('auth-token',responseData.token);
+      window.location.replace('/');
+    }
+    else{
+      alert(responseData.errors);
+    }
+  }
+
   return (
     <div className='loginsignup'>
       <div className="loginsignup-container">
         <h1>{state}</h1>
         <div className="loginsignup-fields">
-          {state==="Sign Up"?<input type="text" placeholder='Your Name' />:<></>}
-          <input type="text" placeholder='Your email ID'/>
-          <input type="password" placeholder='Your Password' />
+          {state==="Sign Up"?<input name='username' value={formData.username} onChange={changeHandler} type="text" placeholder='Your Name' />:<></>}
+          <input name='email' value={formData.email} onChange={changeHandler} type="text" placeholder='Your email ID'/>
+          <input name='password' value={formData.password} onChange={changeHandler} type="password" placeholder='Your Password' />
         </div>
         <button>Continue</button>
         {state==="Sign Up"
