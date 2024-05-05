@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="nav-login-cart">
             {localStorage.getItem('auth-token')
             ?<button onClick={()=> {
-                localStorage.remove('auth-key');
+                localStorage.removeItem('auth-token');
                 window.location.replace('/');
             }}>Log out</button>
             :<Link to='/login'><button>Login</button></Link> }

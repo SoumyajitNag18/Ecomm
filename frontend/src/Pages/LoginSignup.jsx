@@ -70,7 +70,10 @@ const LoginSignup = () => {
           <input name='email' value={formData.email} onChange={changeHandler} type="text" placeholder='Your email ID'/>
           <input name='password' value={formData.password} onChange={changeHandler} type="password" placeholder='Your Password' />
         </div>
-        <button>Continue</button>
+        <button onClick={()=>{
+          if(state==="Sign Up") signup();
+          else login();
+        }}>{state==="Sign Up"?"Sign Up":"Login"}</button>
         {state==="Sign Up"
         ?<p className="loginsignup-login">Already have an account? <span onClick={()=>{setState("Login")}}>Login here</span></p>
         :<p className="loginsignup-login"><span onClick={()=>{setState("Sign Up")}}>Click here</span> to create an account</p>}
