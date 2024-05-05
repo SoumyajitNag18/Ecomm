@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './CSS/LoginSignup.css'
 
-const LoginSingUp = () => {
+const LoginSignup = () => {
 
   const [state, setState] = useState('Login');
   const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ const LoginSingUp = () => {
 
     //For SignUp page
     const signup = async() =>{
-    console.log("Signup function got executed.", formData);
+    console.log("SignUp function got executed.", formData);
     let responseData;
     await fetch("http://localhost:4000/signup",{
       method:"POST",
@@ -73,7 +73,7 @@ const LoginSingUp = () => {
         <button>Continue</button>
         {state==="Sign Up"
         ?<p className="loginsignup-login">Already have an account? <span onClick={()=>{setState("Login")}}>Login here</span></p>
-        :<p className="loginsignup-login">Create an account <span onClick={()=>{setState("Sign Up")}}>Click here</span></p>}
+        :<p className="loginsignup-login"><span onClick={()=>{setState("Sign Up")}}>Click here</span> to create an account</p>}
         
         <div className="loginsignup-agree">
             <input type="checkbox" name='' id='' />
@@ -83,4 +83,4 @@ const LoginSingUp = () => {
     </div>
   )
 }
-export default LoginSingUp
+export default LoginSignup
