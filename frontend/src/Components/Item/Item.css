@@ -1,9 +1,10 @@
-.item{
+.item {
     width: 280px;
 }
 
 .item img{
-    width: 280px;
+    object-fit: cover;
+    object-position: top;
 }
 
 .item p {

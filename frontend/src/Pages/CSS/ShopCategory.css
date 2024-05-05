@@ -21,8 +21,8 @@
     margin: 20px 170px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 80px;
-    gap: 20px;
+    row-gap: 23px;
+    column-gap: 20px;
 }
 .shopcategory-loadmore{
     display: flex;
@@ -56,7 +56,7 @@
     .shopcategory-products{
         width: 90%;
         margin: 10px auto;
-        row-gap: 40px;
+        row-gap: 10px;
     }
     .shopcategory-products .item{
         margin: auto;
