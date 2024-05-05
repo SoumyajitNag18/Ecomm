@@ -31,7 +31,7 @@ let new_collections = [
   },
   {
     id: 8,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Black Printed Top",
     image: p4_img,
     new_price: 499,
     old_price: 649,
@@ -59,7 +59,7 @@ let new_collections = [
   },
   {
     id: 28,
-    name: "Men Navy Casual Jacket for Men",
+    name: "Grey Green Sweatshirt for Kids",
     image: p8_img,
     new_price: 549,
     old_price: 799,

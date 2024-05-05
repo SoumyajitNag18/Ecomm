@@ -5,6 +5,9 @@ import arrow_icon from '../Assets/arrow.png'
 import hero_image from '../Assets/hero_image.png'
 
 const Hero = () => {
+  const latestCollectionRedirect = () => {
+    window.location.replace('/latest-collection');
+}
   return (
     <div className='hero'>
       <div className="hero-left">
@@ -16,7 +19,7 @@ const Hero = () => {
           </div>
           <p>Collection</p>
         </div>
-        <div className="hero-latest-btn">
+        <div className="hero-latest-btn" onClick={latestCollectionRedirect}>
           <div>Latest Collections</div>
           <img src={arrow_icon} alt="" />
         </div>

@@ -15,9 +15,13 @@ const Navbar = () => {
         e.target.classList.toggle('open')
     }
 
+    const mainPageRedirection = () => {
+        window.location.replace('/');
+    }
+
   return (
     <div className='navbar'>
-        <div className="nav-logo">
+        <div className="nav-logo" onClick={mainPageRedirection}>
             <img src={logo} alt="" />
             <p>SHOPPER</p>
         </div>

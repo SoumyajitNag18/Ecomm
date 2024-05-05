@@ -9,6 +9,7 @@ import men_banner from "./Components/Assets/banner_men.png";
 import women_banner from "./Components/Assets/banner_women.png";
 import kid_banner from "./Components/Assets/banner_kids.png";
 import BasicLayout from "./Components/Layouts/BasicLayout";
+import LatestCollection from "./Pages/LatestCollection";
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function App() {
               <BasicLayout>
                 <ShopCategory banner={kid_banner} category="kid" />
               </BasicLayout>
+          }/>
+          <Route path="/latest-collection" element={
+                <BasicLayout>
+                  <LatestCollection banner={men_banner}/>
+                </BasicLayout>
           }/>
           <Route path="/product" element={
               <BasicLayout>
