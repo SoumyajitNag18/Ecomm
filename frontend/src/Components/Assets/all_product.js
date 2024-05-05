@@ -145,7 +145,7 @@ let all_product = [
     name: "Men Blue Whited Full-Zip Bomber Jacket for Men",
     category: "men",
     image: p14_img,
-    new_price:1999,
+    new_price: 1999,
     old_price: 2999,
   },
   {
