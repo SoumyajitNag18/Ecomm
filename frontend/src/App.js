@@ -31,7 +31,7 @@ function App() {
                 <ShopCategory banner={women_banner} category="women" />
               </BasicLayout>
           }/>
-          <Route path="/kids" element={
+          <Route path="/kid" element={
               <BasicLayout>
                 <ShopCategory banner={kid_banner} category="kid" />
               </BasicLayout>

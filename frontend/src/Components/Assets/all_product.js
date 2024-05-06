@@ -206,7 +206,7 @@ let all_product = [
   },
   {
     id: 22,
-    name: "Men White Bomber Jacket for Men",
+    name: "Men White Bomber Jacket",
     category: "men",
     image: p22_img,
     new_price: 1899,
@@ -214,7 +214,7 @@ let all_product = [
   },
   {
     id: 23,
-    name: "Men Deep Green Solid Shirt for Men",
+    name: "Men Deep Green Solid Shirt",
     category: "men",
     image: p23_img,
     new_price:999 ,
@@ -222,7 +222,7 @@ let all_product = [
   },
   {
     id: 24,
-    name: "Men Black Leather Jacket for Men",
+    name: "Men Black Leather Jacket",
     category: "men",
     image: p24_img,
     new_price: 2499,
@@ -262,7 +262,7 @@ let all_product = [
   },
   {
     id: 29,
-    name: "Greeen Yellow Navy  Sweatshirt for Kids",
+    name: "Green Yellow Navy Sweatshirt for Kids",
     category: "kid",
     image: p29_img,
     new_price: 799,
@@ -294,7 +294,7 @@ let all_product = [
   },
   {
     id: 33,
-    name: "Navy Blue Sweatshirt for kids",
+    name: "Navy Blue Sweatshirt for Kids",
     category: "kid",
     image: p33_img,
     new_price: 749,

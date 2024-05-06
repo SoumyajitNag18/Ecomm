@@ -75,9 +75,9 @@ const AddProduct = () => {
         <div className="addproduct-itemfield">
             <p>Product Category</p>
             <select value={productDetails.category} onChange={changeHandler} name="category" className='addproduct-selector'>
-                <option value="Women">Women</option>
-                <option value="Men">Men</option>
-                <option value="Kids">Kids</option>
+                <option value="women">Women</option>
+                <option value="men">Men</option>
+                <option value="kid">Kids</option>
             </select>
         </div>
         <div className="addproduct-itemfield">
