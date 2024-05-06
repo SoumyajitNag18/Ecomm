@@ -212,6 +212,14 @@ app.get('/newcollections', async(req, res)=>{
     let newcollection = products.slice(1).slice(-8);
     console.log("All New Collections were fetched!");
     res.send(newcollection);
+});
+
+//Creating end point for popular in women section
+app.get('/popularinwomen', async(req, res)=>{
+    let products = await Product.find({category:'women'});
+    let popular_in_women = products.slice(0,4);
+    console.log("Popular in women fetched!");
+    res.send(popular_in_women);
 })
 
 app.listen(PORT, (error) => {
