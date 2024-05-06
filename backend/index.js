@@ -4,7 +4,7 @@ const PORT = 4000;
 const express = require("express");
 const app = express();
 
-// auth strat setup and cross origin preference
+// JSON Webtoken setup and cross origin preference
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
@@ -181,6 +181,7 @@ app.post('/signup' ,async (req,res)=>{
         }
     }
 
+    //Genrating and sending token as a response with the help of JWT
     const token = jwt.sign(data, 'secret_ecom');
     res.json({success:true,token})
 })
@@ -197,6 +198,7 @@ app.post('/login' ,async (req,res)=>{
                 }
             }
 
+            //Genrating and sending token as a response with the help of JWT
             const token = jwt.sign(data, 'secret_ecom');
             res.json({success:true,token});
         }
@@ -230,6 +232,7 @@ const fetchUser = async (req, res, next)=>{
     }
     else{
         try{
+            //Verifying token as a response with the help of JWT
             const data = jwt.verify(token,'secret_ecom');
             req.user=data.user;
             next();
@@ -258,6 +261,14 @@ app.post('/removefromcart', fetchUser,async(req, res)=>{
     res.send("Removed from cart.");
 });
 
+//Creating end point for getting cart data
+app.post('/getcart', fetchUser,async(req, res)=>{
+    console.log("Getting products from cart.",req.body.itemId);
+    let userData = await users.findOne({_id: req.user.id});
+    res.json(userData.cartData)
+});
+
+//For any kind of errors 
 app.listen(PORT, (error) => {
     if(!error){
         console.log('Server running on Port '+ PORT)
