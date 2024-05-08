@@ -105,6 +105,7 @@ app.post('/addproduct', async(req, res)=>{
             category: req.body.category,
             new_price: req.body.new_price,
             old_price: req.body.old_price,
+            description: req.body.description,
         });
         await product.save();
     }catch(error){}

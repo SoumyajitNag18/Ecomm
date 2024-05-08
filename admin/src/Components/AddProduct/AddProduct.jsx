@@ -10,7 +10,8 @@ const AddProduct = () => {
         image:'',
         category:'women',
         new_price:0,
-        old_price:0
+        old_price:0,
+        description:''
     });
 
     //For showing the clicked image 
@@ -61,6 +62,10 @@ const AddProduct = () => {
         <div className="addproduct-itemfield">
             <p>Product Title</p>
             <input value={productDetails.name} onChange={changeHandler} type="text" name='name' placeholder='Title of product' />
+        </div>
+        <div className="addproduct-itemfield">
+            <p>Product Description</p>
+            <input value={productDetails.description} onChange={changeHandler} type="text" name='description' placeholder='Description of product' />
         </div>
         <div className="addproduct-price">
             <div className="addproduct-itemfield">
